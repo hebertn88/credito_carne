@@ -1,11 +1,12 @@
 from datetime import datetime
 
-from app.files.files import find_xml_files
-from app.xml.xml import Xml
+from app.controllers.files.files import find_xml_files
+from app.controllers.xml.xml import Xml
 from app.settings import DATE_INITIAL
+
+
 xml_files = find_xml_files()
 
-count = 0
 for file in xml_files:
     
     document = Xml(file)
@@ -17,5 +18,5 @@ for file in xml_files:
     print(document.nota_fiscal.sat)
     print(document.nota_fiscal.valor_total)
     for i in document.itens:
-        print(i.find('./prod/xProd').text)
+        print(i)
     break
