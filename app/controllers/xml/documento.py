@@ -1,7 +1,7 @@
 from datetime import datetime
 
 from app.controllers.xml.util import check_none
-
+from app.models.documento import DocumentoModel
 
 class Document:
     cfe : int
@@ -16,6 +16,15 @@ class Document:
         self.data_emissao = self._get_data_emissao_xml(root)
         self.sat = self._get_sat_xml(root)
         self.valor_total = self._get_valor_total_xml(root)
+
+    def save_documento(self):
+        return DocumentoModel.get_or_create(
+            cfe = self.cfe,
+            chave = self.chave,
+            data_emissao = self.data_emissao,
+            sat = self.sat,
+            valor_total = self.valor_total
+        )[0]
         
     def _get_cfe_xml(self, root):
         return check_none(root.find('./infCFe/ide/nCFe'), int)

@@ -2,3 +2,4 @@
 xml_input
 xml_output
 __pycache__
+*.db

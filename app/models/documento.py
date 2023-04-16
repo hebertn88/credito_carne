@@ -11,4 +11,8 @@ class DocumentoModel(Model):
 
     class Meta:
         database = DATABASE
-        indexes = (('cfe', 'sat'),True)
+        table_name = 'documento'
+        indexes = (
+            (('cfe', 'sat'), True),
+        )
+
